@@ -34,7 +34,7 @@ def train_fn(
         high_res = high_res.to(config.DEVICE)
         low_res = low_res.to(config.DEVICE)
 
-        with torch.cuda.amp.autocast():
+        with torch.amp.autocast('cuda'):
             fake = gen(low_res)
             critic_real = disc(high_res)
             critic_fake = disc(fake.detach())
